@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateToWeather()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Temperature Unit</ion-label>
+      <ion-radio-group [(ngModel)]="temperatureUnit" (ionChange)="onTemperatureChange()">
+        <ion-item lines="none">
+          <ion-radio slot="start" value="metric"></ion-radio>
+          <ion-label>Celsius</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-radio slot="start" value="imperial"></ion-radio>
+          <ion-label>Fahrenheit</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Theme Mode</ion-label>
+      <ion-label slot="end" [style.fontWeight]="!darkMode ? 'bold' : 'normal'">Light</ion-label>
+      <ion-toggle 
+        [(ngModel)]="darkMode" 
+        (ionChange)="onThemeChange()"
+        >
+      </ion-toggle>
+      <ion-label slot="end" [style.fontWeight]="darkMode ? 'bold' : 'normal'">Dark</ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

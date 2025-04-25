@@ -64,8 +64,15 @@
               "sourceMap": true,
               "namedChunks": true
             },
-            "ci": {
-              "progress": false
+            "ci": {},
+            "hidden": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hidden.ts"
+                }
+              ],
+              "outputHashing": "all"
             }
           },
           "defaultConfiguration": "production"
@@ -79,8 +86,9 @@
             "development": {
               "buildTarget": "app:build:development"
             },
-            "ci": {
-              "progress": false
+            "ci": {},
+            "hidden": {
+              "buildTarget": "app:build:hidden"
             }
           },
           "defaultConfiguration": "development"

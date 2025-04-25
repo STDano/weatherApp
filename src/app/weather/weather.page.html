@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar 
+      [(ngModel)]="citySearch"
+      (ionChange)="handleSearch()"
+      placeholder="Search city..."
+      showCancelButton="focus"
+      class="city-searchbar">
+    </ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToSettings()" >
+        <ion-icon slot="icon-only" name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="weather-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ locationName }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="weather-main">
+          <img [src]="weatherIcon" *ngIf="weatherIcon" alt="Weather icon">
+          <h1>{{temperature | number:'1.0-0'}}°</h1>
+        </div>
+        <p class="weather-description">{{weatherDescription | titlecase}}</p>
+        <div class="weather-details">
+          <p><ion-icon name="water-outline"></ion-icon> {{humidity}}%</p>
+          <p><ion-icon name="speedometer-outline"></ion-icon> {{windSpeed | number:'1.0-0'}} mph</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="hourly-scroll-container">
+    <h3>Next 8 Hours</h3>
+    <div class="hourly-horizontal">
+      <div class="hourly-card" *ngFor="let hour of hourlyForecast">
+        <div class="hourly-time">{{hour.dt * 1000 | date:'h a'}}</div>
+        <img [src]="'https://openweathermap.org/img/wn/' + hour.weather[0].icon + '@2x.png'" alt="Weather icon">
+        <div class="hourly-temp">{{hour.main.temp | number:'1.0-0'}}°</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="forecast-scroll-container">
+    <h3>5-Day Forecast</h3>
+    <div class="forecast-horizontal">
+      <div class="forecast-card" *ngFor="let day of dailyForecast">
+        <div class="forecast-day">{{day.dt * 1000 | date:'EEE'}}</div>
+        <img [src]="'https://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'" alt="Weather icon">
+        <div class="forecast-temp">{{day.temp.day | number:'1.0-0'}}°</div>
+        <div class="forecast-desc">{{day.weather[0].description | titlecase}}</div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

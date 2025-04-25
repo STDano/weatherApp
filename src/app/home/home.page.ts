@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { PreferencesService } from '../services/preferences.service';
+import { ModeService } from '../services/mode.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +10,19 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HomePage {
+  isOnline: boolean = true;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private preferences: PreferencesService,
+    private mode: ModeService,
+  ) {}
 
+  async ngOnInit() {
+    this.mode.toggleMode(await this.preferences.getPreference('darkMode'));
+  }
+
+  navigateToWeather() {
+    this.router.navigate(['/weather']);
+  }
 }

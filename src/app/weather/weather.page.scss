@@ -1,0 +1,112 @@
+.status-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  padding: 20px;
+
+  ion-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--ion-color-medium);
+  }
+
+  h3 {
+    margin-bottom: 8px;
+    color: var(--ion-color-dark);
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    margin-bottom: 16px;
+  }
+}
+
+/* Existing styles from template would go here */
+.weather-container {
+  padding: 16px;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+}
+
+.weather-description {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 16px;
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+  }
+}
+
+.hourly-scroll-container,
+.forecast-scroll-container {
+  padding: 0 16px;
+  margin-top: 24px;
+
+  h3 {
+    margin-bottom: 12px;
+    color: var(--ion-color-dark);
+  }
+}
+
+.hourly-horizontal,
+.forecast-horizontal {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.hourly-card,
+.forecast-card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--ion-color-light);
+}
+
+.hourly-card {
+  min-width: 80px;
+}
+
+.forecast-card {
+  min-width: 100px;
+}
